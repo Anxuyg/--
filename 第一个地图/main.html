@@ -8,11 +8,46 @@
     <!--Key值-->
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.14&key=ac5ecb3898367fed6180055dc562b0ba"></script>
     <title>Document</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        #container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
 
 <body>
     <!--地图容器Div-->
     <div id="container"></div>
+    <script>
+        var map = new AMap.Map('container', {
+            zoom: 15, //初始的地图级别(没有变化)
+            //初始化地图的中心点
+            center: [112.98, 28.19] //经纬度长沙市中心
+        })
+
+        console.log(map.getZoom()) //获取地图级别到控制台
+        console.log(map.getCenter()) //获取地图中心点
+
+        map.on('moveend', function() {
+            console.log(map.getZoom())
+            console.log(map.getCenter().toString())
+        })
+
+
+        map.on('zoomend', function() {
+            console.log(map.getZoom())
+            console.log(map.getCenter().toString())
+        })
+    </script>
 </body>
 
 </html>
